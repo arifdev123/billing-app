@@ -2,30 +2,47 @@ package co.in.javacoder.billingapp.entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Stock {
 	@Id
+	@Column(name = "stock_entry_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int entryID;
+
+	@Column(name = "gst_percentage")
 	private int gstInPercentage;
+
+	@Column(name = "quantity")
 	private int quantity;
+
+	@Column(name = "product_price")
 	private double productPrice;
+
+	@Column(name = "date_of_purchase")
 	private LocalDate datePurchased;
+
+	@OneToOne
+	@JoinColumn(name = "product_product_id")
 	private Product product;
+
+	@OneToOne
+	@JoinColumn(name = "supplier_supplier_id")
 	private Supplier supplier;
-	
-	public Stock() { 
-		
+
+	public Stock() {
+
 	}
 
 	public int getEntryID() {
 		return entryID;
-	}
-
-	public void setEntryID(int entryID) {
-		this.entryID = entryID;
 	}
 
 	public int getGstInPercentage() {

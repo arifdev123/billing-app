@@ -1,26 +1,34 @@
 package co.in.javacoder.billingapp.entities;
 
+import javax.annotation.Generated;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Product {
 	@Id
-	 private int id;
-	 private String name;
-	 private String hsn;
-	 private String description;
-	 
-	 public Product(){
-		 
-	 }
+	@Column(name = "product_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
+	@Column(name = "product_name")
+	private String name;
+
+	@Column(name = "hsn_code")
+	private String hsn;
+
+	@Column(name = "description")
+	private String description;
+
+	public Product() {
+
+	}
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
